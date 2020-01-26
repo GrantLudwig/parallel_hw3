@@ -80,23 +80,24 @@ public class BitonicPipeline {
         t7.start();
 
         //while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
+        for (int i = 0; i < 10; i++) {
             try {
                 array = finalOutputQueue.poll(timeout * 1000, TimeUnit.MILLISECONDS);
 
                 if (!RandomArrayGenerator.isSorted(array) || N != array.length)
                     System.out.println("failed");
-//                System.out.println("");
-//                System.out.println("Array");
-//                for (int i = 0; i < array.length; i++) {
-//                    System.out.print(array[i]);
-//                    System.out.print(" ");
-//                }
-//                System.out.println("");
+                System.out.println("");
+                System.out.println("Array");
+                for (int i = 0; i < array.length; i++) {
+                    System.out.print(array[i]);
+                    System.out.print(" ");
+                }
+                System.out.println("");
                 work++;
             } catch (InterruptedException e) {
                 return;
             }
-        //}
+        }
         System.out.println("sorted " + work + " arrays (each: " + N + " doubles) in "
                 + TIME_ALLOWED + " seconds");
     }
