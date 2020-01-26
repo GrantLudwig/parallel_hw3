@@ -9,20 +9,18 @@ public class BitonicStage implements Runnable {
         if (up) {
             for (int i = 0; i < half; i++)
                 if (array[m + i] > array[m + half + i])
-                    double temp = array[m + i]];
-                    array[m + i]] = array[m + half + i];
+                    double temp = array[m + i];
+                    array[m + i] = array[m + half + i];
                     array[m + half + i] = temp;
         }
         else {
             for (int i = 0; i < half; i++)
                 if (array[m + i] < array[m + half + i])
-                    double temp = array[m + i]];
-                    array[m + i]] = array[m + half + i];
+                    double temp = array[m + i];
+                    array[m + i] = array[m + half + i];
                     array[m + half + i] = temp;
         }
     }
-
-    public void
 
     /**
      *
