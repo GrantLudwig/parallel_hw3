@@ -18,10 +18,11 @@ public class BitonicStage implements Runnable {
      */
     public BitonicStage() {}
 
-    public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output) {
+    public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output, String name) {
         this.input1 = input1;
         this.input2 = input2;
         this.output = output;
+        this.name = name;
     }
 
     public void bitonic_merge(int indexStart, int half, boolean up) {
@@ -95,6 +96,7 @@ public class BitonicStage implements Runnable {
 //                }
 //                System.out.println("");
                 output.offer(returnArray, timeout * 1000, TimeUnit.MILLISECONDS);
+                System.out.println(Name + "Complete");
             } catch (InterruptedException e) {
                 return;
             }

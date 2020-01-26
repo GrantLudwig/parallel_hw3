@@ -6,10 +6,10 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 public class BitonicPipeline {
-    //public static final int N = 1 << 22;  // size of the final sorted array (power of two)
-    public static final int N = 16;
-    //public static final int TIME_ALLOWED = 10;  // seconds
-    public static final int TIME_ALLOWED = 1;
+    public static final int N = 1 << 22;  // size of the final sorted array (power of two)
+    //public static final int N = 16;
+    public static final int TIME_ALLOWED = 10;  // seconds
+    //public static final int TIME_ALLOWED = 1;
     private static final int timeout = 10;  // in seconds
 
     public static void main(String[] args) {
@@ -72,11 +72,11 @@ public class BitonicPipeline {
         t4 = new Thread(new StageOne(inputQueue4, outputQueue4));
         t4.start();
 
-        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1));
+        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1, "First"));
         t5.start();
-        t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueue2));
+        t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueue2, "Second"));
         t6.start();
-        t7 = new Thread(new BitonicStage(tempOutputQueue1, tempOutputQueue2, finalOutputQueue));
+        t7 = new Thread(new BitonicStage(tempOutputQueue1, tempOutputQueue2, finalOutputQueue, "Final"));
         t7.start();
 
         while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
