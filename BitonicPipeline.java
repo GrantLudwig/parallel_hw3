@@ -60,11 +60,11 @@ public class BitonicPipeline {
         t4 = new Thread(new StageOne(inputQueue4, outputQueue4));
         t4.start();
 
-        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueues1));
+        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1));
         t5.start();
-        t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueues2));
+        t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueue2));
         t6.start();
-        t7 = new Thread(new BitonicStage(tempOutputQueues1, tempOutputQueues2, finalOutputQueue));
+        t7 = new Thread(new BitonicStage(tempOutputQueue1, tempOutputQueue2, finalOutputQueue));
         t7.start();
 
         double[] array = new double[N];
