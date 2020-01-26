@@ -96,7 +96,7 @@ public class BitonicStage implements Runnable {
 //                }
 //                System.out.println("");
                 output.offer(returnArray, timeout * 1000, TimeUnit.MILLISECONDS);
-                System.out.println(Name + "Complete");
+                System.out.println(name + "Complete");
             } catch (InterruptedException e) {
                 return;
             }
