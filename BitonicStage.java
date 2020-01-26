@@ -53,7 +53,7 @@ public class BitonicStage implements Runnable {
         for (int i = downArray.length - 1; i >= 0; i--)
             array[arrayIndex++] = downArray[i];
 
-        bitonic_sort(0, 0, true);
+        bitonic_sort(0, array.length, true);
 
         return array;
     }
