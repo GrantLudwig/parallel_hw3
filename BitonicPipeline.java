@@ -88,16 +88,5 @@ public class BitonicPipeline {
         }
         System.out.println("sorted " + work + " arrays (each: " + N + " doubles) in "
                 + TIME_ALLOWED + " seconds");
-        rand1.stop();
-        rand2.stop();
-        rand3.stop();
-        rand4.stop();
-        t1.stop();
-        t2.stop();
-        t3.stop();
-        t4.stop();
-        t5.stop();
-        t6.stop();
-        t7.stop();
     }
 }
