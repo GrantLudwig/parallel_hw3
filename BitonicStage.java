@@ -2,8 +2,20 @@
 // BitonicStage.java
 // 1/26/20
 
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.TimeUnit;
+
 public class BitonicStage implements Runnable {
-    private double[] array;
+    private static final int timeout = 10;  // in seconds
+
+    private double[] array; // used for merging the two arrays
+    private SynchronousQueue<double[]> input1, input2, output;
+
+    public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output) {
+        this.input1 = input1;
+        this.input2 = input2;
+        this.output = output;
+    }
 
     public void bitonic_merge(int indexStart, int half, boolean up) {
         double temp;
@@ -60,8 +72,20 @@ public class BitonicStage implements Runnable {
 
     @Override
     public void run() {
+        double[] upArray = new double[1];
+        double[] downArray = new double[1];
         while (true) {
-            // TODO
+            try {
+                upArray = input1.poll(timeout * 1000, TimeUnit.MILLISECONDS);
+                downArray = input2.poll(timeout * 1000, TimeUnit.MILLISECONDS);
+                process(upArray, downArray);
+                output.offer(array, timeout * 1000, TimeUnit.MILLISECONDS);
+                } else {
+                    System.out.println(getClass().getName() + " " + name + " got null array");
+                }
+            } catch (InterruptedException e) {
+                return;
+            }
         }
     }
 }

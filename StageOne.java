@@ -57,8 +57,8 @@ public class StageOne implements Runnable {
                 } else {
                     System.out.println(getClass().getName() + " " + name + " got null array");
                 }
-            } catch (InterruptedException e) {
-                return;
+                } catch (InterruptedException e) {
+                    return;
             }
         }
     }
