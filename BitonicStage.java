@@ -58,9 +58,9 @@ public class BitonicStage implements Runnable {
         System.out.println("Ending Array");
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i]);
-            System.out.print();
+            System.out.print(" ");
         }
-        System.out.println();
+        System.out.println("");
 
         return array;
     }
