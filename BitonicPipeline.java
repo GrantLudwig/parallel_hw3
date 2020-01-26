@@ -79,8 +79,7 @@ public class BitonicPipeline {
         t7 = new Thread(new BitonicStage(tempOutputQueue1, tempOutputQueue2, finalOutputQueue, "Final"));
         t7.start();
 
-        //while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
-        for (int j = 0; j < 10; j++) {
+        while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
             try {
                 array = finalOutputQueue.poll(timeout * 1000, TimeUnit.MILLISECONDS);
 
