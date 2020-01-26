@@ -6,10 +6,10 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 public class BitonicPipeline {
-    public static final int N = 1 << 22;  // size of the final sorted array (power of two)
-    //public static final int N = 16;
-    public static final int TIME_ALLOWED = 10;  // seconds
-    //public static final int TIME_ALLOWED = 1;
+    //public static final int N = 1 << 22;  // size of the final sorted array (power of two)
+    public static final int N = 16;
+    //public static final int TIME_ALLOWED = 10;  // seconds
+    public static final int TIME_ALLOWED = 1;
     private static final int timeout = 10;  // in seconds
 
     public static void main(String[] args) {
@@ -77,6 +77,8 @@ public class BitonicPipeline {
 
                 if (!RandomArrayGenerator.isSorted(array) || N != array.length)
                     System.out.println("failed");
+                else
+                    System.out.println("GOT IT");
                 work++;
             } catch (InterruptedException e) {
                 return;
