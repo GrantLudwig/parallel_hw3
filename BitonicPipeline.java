@@ -80,7 +80,7 @@ public class BitonicPipeline {
         t7.start();
 
         //while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
-        for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             try {
                 array = finalOutputQueue.poll(timeout * 1000, TimeUnit.MILLISECONDS);
 
