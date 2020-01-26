@@ -81,7 +81,7 @@ public class BitonicPipeline {
 
         while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
             try {
-                finalOutputQueue.offer(array, timeout * 1000, TimeUnit.MILLISECONDS);
+                finalOutputQueue.poll(array, timeout * 1000, TimeUnit.MILLISECONDS);
 
                 if (!RandomArrayGenerator.isSorted(array) || N != array.length)
                     System.out.println("failed");
