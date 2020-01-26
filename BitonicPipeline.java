@@ -15,6 +15,13 @@ public class BitonicPipeline {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         double[] array = new double[N];
+        System.out.println("");
+        System.out.println("Array Before");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            System.out.print(" ");
+        }
+        System.out.println("");
         int work = 0;
 
         Thread  rand1,
