@@ -6,8 +6,8 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 public class BitonicPipeline {
-    public static final int N = 1 << 22;  // size of the final sorted array (power of two)
-    //public static final int N = 16;
+    //public static final int N = 1 << 22;  // size of the final sorted array (power of two)
+    public static final int N = 16;
     public static final int TIME_ALLOWED = 10;  // seconds
     //public static final int TIME_ALLOWED = 1;
     private static final int timeout = 10;  // in seconds
@@ -15,13 +15,13 @@ public class BitonicPipeline {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         double[] array = new double[N];
-        System.out.println("");
-        System.out.println("Array Before");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
-            System.out.print(" ");
-        }
-        System.out.println("");
+//        System.out.println("");
+//        System.out.println("Array Before");
+//        for (int i = 0; i < array.length; i++) {
+//            System.out.print(array[i]);
+//            System.out.print(" ");
+//        }
+//        System.out.println("");
         int work = 0;
 
         Thread  rand1,
