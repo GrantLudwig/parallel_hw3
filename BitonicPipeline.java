@@ -10,36 +10,35 @@ public class BitonicPipeline {
     public static final int TIME_ALLOWED = 10;  // seconds
     //public static final int TIME_ALLOWED = 1;
 
-    Thread  rand1,
-            rand2,
-            rand3,
-            rand4,
-            t1,
-            t2,
-            t3,
-            t4,
-            t5,
-            t6,
-            t7;
-
-    // Would like to create an array of SynchronousQueues but cannot find out how
-    SynchronousQueue<double[]> inputQueue1 = new SynchronousQueue<double[]>();
-    SynchronousQueue<double[]> inputQueue2 = new SynchronousQueue<double[]>();
-    SynchronousQueue<double[]> inputQueue3 = new SynchronousQueue<double[]>();
-    SynchronousQueue<double[]> inputQueue4 = new SynchronousQueue<double[]>();
-
-    SynchronousQueue<double[]> outputQueue1 = new SynchronousQueue<double[]>();
-    SynchronousQueue<double[]> outputQueue2 = new SynchronousQueue<double[]>();
-    SynchronousQueue<double[]> outputQueue3 = new SynchronousQueue<double[]>();
-    SynchronousQueue<double[]> outputQueue4 = new SynchronousQueue<double[]>();
-
-    SynchronousQueue<double[]> tempOutputQueue1 = new SynchronousQueue<double[]>();
-    SynchronousQueue<double[]> tempOutputQueue2 = new SynchronousQueue<double[]>();
-
-    SynchronousQueue<double[]> finalOutputQueue = new SynchronousQueue<double[]>();
-
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
+        Thread  rand1,
+                rand2,
+                rand3,
+                rand4,
+                t1,
+                t2,
+                t3,
+                t4,
+                t5,
+                t6,
+                t7;
+
+        // Would like to create an array of SynchronousQueues but cannot find out how
+        SynchronousQueue<double[]> inputQueue1 = new SynchronousQueue<double[]>();
+        SynchronousQueue<double[]> inputQueue2 = new SynchronousQueue<double[]>();
+        SynchronousQueue<double[]> inputQueue3 = new SynchronousQueue<double[]>();
+        SynchronousQueue<double[]> inputQueue4 = new SynchronousQueue<double[]>();
+
+        SynchronousQueue<double[]> outputQueue1 = new SynchronousQueue<double[]>();
+        SynchronousQueue<double[]> outputQueue2 = new SynchronousQueue<double[]>();
+        SynchronousQueue<double[]> outputQueue3 = new SynchronousQueue<double[]>();
+        SynchronousQueue<double[]> outputQueue4 = new SynchronousQueue<double[]>();
+
+        SynchronousQueue<double[]> tempOutputQueue1 = new SynchronousQueue<double[]>();
+        SynchronousQueue<double[]> tempOutputQueue2 = new SynchronousQueue<double[]>();
+
+        SynchronousQueue<double[]> finalOutputQueue = new SynchronousQueue<double[]>();
 
         // Setup all threads
         // get random numbers
