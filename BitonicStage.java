@@ -6,17 +6,18 @@ public class BitonicStage implements Runnable {
     private double[] array;
 
     public void bitonic_merge(int indexStart, int half, bool up) {
+        double temp;
         if (up) {
             for (int i = 0; i < half; i++)
                 if (array[m + i] > array[m + half + i])
-                    double temp = array[m + i];
+                    temp = array[m + i];
                     array[m + i] = array[m + half + i];
                     array[m + half + i] = temp;
         }
         else {
             for (int i = 0; i < half; i++)
                 if (array[m + i] < array[m + half + i])
-                    double temp = array[m + i];
+                    temp = array[m + i];
                     array[m + i] = array[m + half + i];
                     array[m + half + i] = temp;
         }
