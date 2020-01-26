@@ -10,6 +10,7 @@ public class BitonicStage implements Runnable {
 
     private double[] array; // used for merging the two arrays
     private SynchronousQueue<double[]> input1, input2, output;
+    private String name;
 
     /**
      * Defualt Constructor
@@ -17,10 +18,11 @@ public class BitonicStage implements Runnable {
      */
     public BitonicStage() {}
 
-    public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output) {
+    public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output, String name) {
         this.input1 = input1;
         this.input2 = input2;
         this.output = output;
+        this.name = name;
     }
 
     public void bitonic_merge(int indexStart, int half, boolean up) {
@@ -87,9 +89,9 @@ public class BitonicStage implements Runnable {
                 downArray = input2.poll(timeout * 1000, TimeUnit.MILLISECONDS);
                 returnArray = process(upArray, downArray);
                 System.out.println("");
-                System.out.println("Return Array");
-                for (int i = 0; i < returnArray.length; i++) {
-                    System.out.print(returnArray[i]);
+                System.out.println("Array " + name);
+                for (int i = 0; i < array.length; i++) {
+                    System.out.print(array[i]);
                     System.out.print(" ");
                 }
                 System.out.println("");

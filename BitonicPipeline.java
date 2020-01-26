@@ -65,11 +65,11 @@ public class BitonicPipeline {
         t4 = new Thread(new StageOne(inputQueue4, outputQueue4));
         t4.start();
 
-        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1));
+        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1, "First"));
         t5.start();
-        t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueue2));
+        t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueue2, "Second"));
         t6.start();
-        t7 = new Thread(new BitonicStage(tempOutputQueue1, tempOutputQueue2, finalOutputQueue));
+        t7 = new Thread(new BitonicStage(tempOutputQueue1, tempOutputQueue2, finalOutputQueue, "Last"));
         t7.start();
 
         while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
@@ -78,13 +78,13 @@ public class BitonicPipeline {
 
                 if (!RandomArrayGenerator.isSorted(array) || N != array.length)
                     System.out.println("failed");
-                System.out.println("");
-                System.out.println("Array");
-                for (int i = 0; i < array.length; i++) {
-                    System.out.print(array[i]);
-                    System.out.print(" ");
-                }
-                System.out.println("");
+//                System.out.println("");
+//                System.out.println("Array");
+//                for (int i = 0; i < array.length; i++) {
+//                    System.out.print(array[i]);
+//                    System.out.print(" ");
+//                }
+//                System.out.println("");
                 work++;
             } catch (InterruptedException e) {
                 return;
