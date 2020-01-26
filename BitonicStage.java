@@ -11,6 +11,12 @@ public class BitonicStage implements Runnable {
     private double[] array; // used for merging the two arrays
     private SynchronousQueue<double[]> input1, input2, output;
 
+    /**
+     * Defualt Constructor
+     * Used when there is no threading
+     */
+    public BitonicStage() {}
+
     public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output) {
         this.input1 = input1;
         this.input2 = input2;
