@@ -86,6 +86,13 @@ public class BitonicStage implements Runnable {
                 upArray = input1.poll(timeout * 1000, TimeUnit.MILLISECONDS);
                 downArray = input2.poll(timeout * 1000, TimeUnit.MILLISECONDS);
                 returnArray = process(upArray, downArray);
+                System.out.println("");
+                System.out.println("Return Array");
+                for (int i = 0; i < returnArray.length; i++) {
+                    System.out.print(returnArray[i]);
+                    System.out.print(" ");
+                }
+                System.out.println("");
                 output.offer(returnArray, timeout * 1000, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
                 return;
