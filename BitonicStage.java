@@ -41,7 +41,7 @@ public class BitonicStage implements Runnable {
             array[arrayIndex++] = upArray[i];
 
         // Fill down half, need to invert the array
-        for (int i = downArray.length; i > 0; i--)
+        for (int i = downArray.length - 1; i >= 0; i--)
             array[arrayIndex++] = downArray[i];
 
         System.out.println("Array Values:");
