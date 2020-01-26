@@ -72,11 +72,15 @@ public class BitonicPipeline {
         double[] array = new double[N];
         int work = 0;
         while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
-            finalOutputQueue.offer(array, timeout * 1000, TimeUnit.MILLISECONDS);
+            try {
+                finalOutputQueue.offer(array, timeout * 1000, TimeUnit.MILLISECONDS);
 
-            if (!RandomArrayGenerator.isSorted(array) || N != array.length)
-                System.out.println("failed");
-            work++;
+                if (!RandomArrayGenerator.isSorted(array) || N != array.length)
+                    System.out.println("failed");
+                work++;
+            } catch (InterruptedException e) {
+                return;
+            }
         }
         System.out.println("sorted " + work + " arrays (each: " + N + " doubles) in "
                 + TIME_ALLOWED + " seconds");
