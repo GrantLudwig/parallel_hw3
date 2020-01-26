@@ -81,7 +81,7 @@ public class BitonicPipeline {
                 System.out.println("");
                 System.out.println("Array");
                 for (int i = 0; i < array.length; i++) {
-                    System.out.print(i);
+                    System.out.print(array[i]);
                     System.out.print(" ");
                 }
                 System.out.println("");
