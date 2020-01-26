@@ -68,11 +68,8 @@ public class BitonicStage implements Runnable {
 
     @Override
     public void run() {
-        while (true)
-            try {
-                // TODO
-            } catch (InterruptedException e) {
-                return;
-            }
+        while (true) {
+            // TODO
+        }
     }
 }
