@@ -9,9 +9,9 @@ public class BitonicPipeline {
     //public static final int N = 16;
     public static final int TIME_ALLOWED = 10;  // seconds
     //public static final int TIME_ALLOWED = 1;
-    SynchronousQueue<double[]>[] inputQueue = new SynchronousQueue<double[]>()[4];
-    SynchronousQueue<double[]>[] outputQueue = new SynchronousQueue<double[]>()[4];
-    SynchronousQueue<double[]>[] tempOutputQueues = new SynchronousQueue<double[]>()[2];
+    SynchronousQueue<double[]>[] inputQueue = new SynchronousQueue<double[]>[4];
+    SynchronousQueue<double[]>[] outputQueue = new SynchronousQueue<double[]>[4];
+    SynchronousQueue<double[]>[] tempOutputQueues = new SynchronousQueue<double[]>[2];
     SynchronousQueue<double[]> finalOutputQueue = new SynchronousQueue<double[]>();
 
     public static void main(String[] args) {
