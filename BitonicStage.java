@@ -62,6 +62,8 @@ public class BitonicStage implements Runnable {
             System.out.print(array[i]);
             System.out.print(" ");
         }
+
+        return array;
     }
 
     @Override
