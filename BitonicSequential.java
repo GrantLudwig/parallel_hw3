@@ -10,10 +10,10 @@
  * @versioon 24-Jan-2020
  */
 public class BitonicSequential {
-   // public static final int N = 1 << 22;  // size of the final sorted array (power of two)
-    public static final int N = 16;
-    //public static final int TIME_ALLOWED = 10;  // seconds
-    public static final int TIME_ALLOWED = 1;
+    public static final int N = 1 << 22;  // size of the final sorted array (power of two)
+    //public static final int N = 16;
+    public static final int TIME_ALLOWED = 10;  // seconds
+    //public static final int TIME_ALLOWED = 1;
 
     /**
      * Main entry for HW3 assignment.
