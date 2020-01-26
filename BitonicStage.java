@@ -5,7 +5,7 @@
 public class BitonicStage implements Runnable {
     private double[] array;
 
-    public void bitonic_merge(int indexStart, int half, bool up) {
+    public void bitonic_merge(int indexStart, int half, boolean up) {
         double temp;
         if (up) {
             for (int i = 0; i < half; i++)
