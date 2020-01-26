@@ -14,7 +14,7 @@ public class BitonicPipeline {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        double[] array = new double[N];
+        double[] array = new double[1];
 //        System.out.println("");
 //        System.out.println("Array Before");
 //        for (int i = 0; i < array.length; i++) {
@@ -83,7 +83,7 @@ public class BitonicPipeline {
             try {
                 array = finalOutputQueue.poll(timeout * 1000, TimeUnit.MILLISECONDS);
 
-                if (!RandomArrayGenerator.isSorted(array) || N != array.length)
+                if (!RandomArrayGenerator.isSorted(array) || N != array.length || array == NULL)
                     System.out.println("failed");
 //                System.out.println("");
 //                System.out.println("Array");
