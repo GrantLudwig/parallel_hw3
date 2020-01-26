@@ -55,6 +55,13 @@ public class BitonicStage implements Runnable {
 
         bitonic_sort(0, array.length, true);
 
+        System.out.println("Ending Array");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            System.out.print();
+        }
+        System.out.println();
+
         return array;
     }
 
