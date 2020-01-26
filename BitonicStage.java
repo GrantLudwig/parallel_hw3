@@ -25,6 +25,15 @@ public class BitonicStage implements Runnable {
         }
     }
 
+    public void bitonic_sort(int indexStart, int length, boolean up) {
+        if (length > 1) {
+            int half = length / 2;
+            bitonic_merge(indexStart, half, up);
+            bitonic_sort(indexStart, half, up);
+            bitonic_sort(indexStart + half, half, up);
+        }
+    }
+
     /**
      *
      * @param upArray Assumes is sorted ascending
@@ -44,24 +53,7 @@ public class BitonicStage implements Runnable {
         for (int i = downArray.length - 1; i >= 0; i--)
             array[arrayIndex++] = downArray[i];
 
-        System.out.println("Array Values:");
-        System.out.println("Up Array");
-        for (int i = 0; i < upArray.length; i++) {
-            System.out.print(upArray[i]);
-            System.out.print(" ");
-        }
-        System.out.println();
-        System.out.println("Down Array");
-        for (int i = 0; i < downArray.length; i++) {
-            System.out.print(downArray[i]);
-            System.out.print(" ");
-        }
-        System.out.println();
-        System.out.println("Full Array");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
-            System.out.print(" ");
-        }
+        bitonic_sort(0, 0, true);
 
         return array;
     }
