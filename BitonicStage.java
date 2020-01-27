@@ -56,8 +56,8 @@ public class BitonicStage implements Runnable {
     public void bitonic_sort(int indexStart, int length) {
         if (length > 1) {
             int half = length / 2;
-            bitonic_merge(indexStart, half, up);
-            bitonic_sort(indexStart, half, up);
+            bitonic_merge(indexStart, half);
+            bitonic_sort(indexStart, half);
             bitonic_sort(indexStart + half, half);
         }
     }
