@@ -85,12 +85,12 @@ public class BitonicPipeline {
         for (int i = 0; i < NUM_BITONIC_THREADS; i++)
             outputQueues[i] = new SynchronousQueue<double[]>();
         for (int i = 0; i < NUM_BITONIC_THREADS - 1; i++) {
-            stageThreads[i] = new Thread(new BitonicStage(stageOutputQueue[i * 2], stageOutputQueue[i * 2 + 1], outputQueues[i]));
-            stageThreads[i].start();
+            bitonicThreads[i] = new Thread(new BitonicStage(stageOutputQueue[i * 2], stageOutputQueue[i * 2 + 1], outputQueues[i]));
+            bitonicThreads[i].start();
         }
         // final thread
-        stageThreads[2] = new Thread(new BitonicStage(outputQueues[0], outputQueues[1], outputQueues[3]));
-        stageThreads[2].start();
+        bitonicThreads[2] = new Thread(new BitonicStage(outputQueues[0], outputQueues[1], outputQueues[3]));
+        bitonicThreads[2].start();
 //        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1, "First"));
 //        t5.start();
 //        t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueue2, "Second"));
