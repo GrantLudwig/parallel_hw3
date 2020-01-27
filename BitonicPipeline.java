@@ -78,12 +78,14 @@ public class BitonicPipeline {
         t6.start();
         t7 = new Thread(new BitonicStage(tempOutputQueue1, tempOutputQueue2, finalOutputQueue, "Final"));
         t7.start();
-
+        double[] tempArray;
+        boolean first = true;
+        boolean same = true;
         while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
             try {
                 array = new double[1];
                 array = finalOutputQueue.poll(timeout * 1000, TimeUnit.MILLISECONDS);
-
+                tempArray = new double[array.length];
                 if (!RandomArrayGenerator.isSorted(array) || N != array.length || array == null)
                     System.out.println("failed");
 //                System.out.println("");
@@ -93,6 +95,20 @@ public class BitonicPipeline {
 //                    System.out.print(" ");
 //                }
 //                System.out.println("");
+                same = true;
+                if (!first) {
+                    for (int i = 0; i < array.length; i++) {
+                        if (array[i] != tempArray[i]){
+                            System.out.println("Not Same");
+                            same = false;
+                        }
+                    }
+                }
+                // copy array
+                for (int i = 0; i < array.length; i++) {
+                    tempArray[i] = array[i];
+                }
+                first = false;
                 work++;
             } catch (InterruptedException e) {
                 return;
