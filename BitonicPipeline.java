@@ -19,7 +19,6 @@ public class BitonicPipeline {
     public static final int NUM_BITONIC_THREADS = 3;
 
     /**
-     *
      * @param args not used
      */
     public static void main(String[] args) {
@@ -32,7 +31,6 @@ public class BitonicPipeline {
         Thread[] bitonicThreads = new Thread[NUM_BITONIC_THREADS];
 
         // build arrays of SynchronousQueues
-        // will cause unchecked or unsafe operations to pop up during compile
         SynchronousQueue<double[]> randInputQueue[];
         randInputQueue = new SynchronousQueue[NUM_RAND_THREADS];
 

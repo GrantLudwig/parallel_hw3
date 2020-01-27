@@ -27,10 +27,10 @@ public class BitonicStage implements Runnable {
 
     /**
      * Constructor
-     * @param input1
-     * @param input2
-     * @param output
-     * @param name
+     * @param input1 SynchronousQueue with the up array of the sort, array is assumed to be sorted ascending
+     * @param input2 SynchronousQueue with the "down" array of the sort, array is assumed to be sorted ascending
+     * @param output SynchronousQueue to output the sorted array
+     * @param name of the object, usefull for debugging
      */
     public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output, String name) {
         this.input1 = input1;
@@ -39,10 +39,21 @@ public class BitonicStage implements Runnable {
         this.name = name;
     }
 
+    /**
+     * Constructor
+     * @param input1 SynchronousQueue with the up array of the sort, array is assumed to be sorted ascending
+     * @param input2 SynchronousQueue with the "down" array of the sort, array is assumed to be sorted ascending
+     * @param output SynchronousQueue to output the sorted array
+     */
     public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output) {
         this(input1, input2, output, "");
     }
 
+    /**
+     * Performs the bitonic merge portion of the bitonic sort algorthim
+     * @param indexStart The starting index of the section of the array to be merged
+     * @param half Half point of the array to be merged
+     */
     public void bitonic_merge(int indexStart, int half) {
         double temp;
         for (int i = 0; i < half; i++)
@@ -53,6 +64,11 @@ public class BitonicStage implements Runnable {
             }
     }
 
+    /**
+     * Performs the bitonic sort portion of the bitonic sort algorithm
+     * @param indexStart The starting index of the section of the array to be sorted
+     * @param length of the array to be sorted
+     */
     public void bitonic_sort(int indexStart, int length) {
         if (length > 1) {
             int half = length / 2;
@@ -63,7 +79,7 @@ public class BitonicStage implements Runnable {
     }
 
     /**
-     *
+     * Processes two asecnding sorted arrays and returns a sorted array of the combined two arrays
      * @param upArray Assumes is sorted ascending
      * @param downArray Assumes is sorted ascending
      * @return Ascending array of doubles
@@ -86,6 +102,9 @@ public class BitonicStage implements Runnable {
         return array;
     }
 
+    /***
+     * Run when used in a thread
+     */
     @Override
     public void run() {
         double[] upArray = new double[1];
@@ -94,20 +113,9 @@ public class BitonicStage implements Runnable {
         while (true) {
             try {
                 upArray = input1.poll(timeout * 1000, TimeUnit.MILLISECONDS);
-                //System.out.println(name + " pulled input1");
                 downArray = input2.poll(timeout * 1000, TimeUnit.MILLISECONDS);
-                //System.out.println(name + " pulled input2");
                 returnArray = process(upArray, downArray);
-                //System.out.println(name + " processed array");
-//                System.out.println("");
-//                System.out.println("Array " + name);
-//                for (int i = 0; i < array.length; i++) {
-//                    System.out.print(array[i]);
-//                    System.out.print(" ");
-//                }
-//                System.out.println("");
                 output.offer(returnArray, timeout * 1000, TimeUnit.MILLISECONDS);
-                //System.out.println(name + " Complete *******************");
             } catch (InterruptedException e) {
                 return;
             }
