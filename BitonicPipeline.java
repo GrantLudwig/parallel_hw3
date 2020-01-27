@@ -30,20 +30,20 @@ public class BitonicPipeline {
 
         // Would like to create an array of SynchronousQueues but cannot find out how
         SynchronousQueue<double[]> randInputQueue[];
-        randInputQueue[] = new SynchronousQueue[NUM_RAND_THREADS];
+        randInputQueue = new SynchronousQueue[NUM_RAND_THREADS];
 //        SynchronousQueue<double[]> inputQueue2 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> inputQueue3 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> inputQueue4 = new SynchronousQueue<double[]>();
 
         SynchronousQueue<double[]>[] stageOutputQueue[];
-        stageOutputQueue[] = new SynchronousQueue[NUM_STAGE_THREADS];
+        stageOutputQueue = new SynchronousQueue[NUM_STAGE_THREADS];
 //        SynchronousQueue<double[]> outputQueue1 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue2 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue3 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue4 = new SynchronousQueue<double[]>();
 
         SynchronousQueue<double[]>[] outputQueues[];
-        outputQueues[] = new SynchronousQueue[NUM_BITONIC_THREADS];
+        outputQueues = new SynchronousQueue[NUM_BITONIC_THREADS];
 //        SynchronousQueue<double[]> tempOutputQueue1 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> tempOutputQueue2 = new SynchronousQueue<double[]>();
 
