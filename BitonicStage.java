@@ -80,11 +80,14 @@ public class BitonicStage implements Runnable {
 
     @Override
     public void run() {
-        double[] upArray = new double[1];
-        double[] downArray = new double[1];
-        double[] returnArray = new double[1];
+        double[] upArray;
+        double[] downArray;
+        double[] returnArray;
         while (true) {
             try {
+                uparray = new double[1];
+                downArray = new double[1];
+                returnArray = new double[1];
                 upArray = input1.poll(timeout * 1000, TimeUnit.MILLISECONDS);
                 //System.out.println(name + "pulled input1");
                 downArray = input2.poll(timeout * 1000, TimeUnit.MILLISECONDS);
