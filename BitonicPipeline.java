@@ -89,7 +89,7 @@ public class BitonicPipeline {
             bitonicThreads[i].start();
         }
         // final thread
-        bitonicThreads[2] = new Thread(new BitonicStage(outputQueues[0], outputQueues[1], outputQueues[3]));
+        bitonicThreads[2] = new Thread(new BitonicStage(outputQueues[0], outputQueues[1], outputQueues[2]));
         bitonicThreads[2].start();
 //        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1, "First"));
 //        t5.start();
