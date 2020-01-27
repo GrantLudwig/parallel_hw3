@@ -29,23 +29,27 @@ public class BitonicPipeline {
         Thread[] bitonicThreads = new Thread[NUM_BITONIC_THREADS];
 
         // Would like to create an array of SynchronousQueues but cannot find out how
-        SynchronousQueue<double[]>[] randInputQueue = new SynchronousQueue<double[]>[NUM_RAND_THREADS];
+        SynchronousQueue<double[]> randInputQueue[];
+        randInputQueue[] = new SynchronousQueue[NUM_RAND_THREADS];
 //        SynchronousQueue<double[]> inputQueue2 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> inputQueue3 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> inputQueue4 = new SynchronousQueue<double[]>();
 
-        SynchronousQueue<double[]>[] stageOutputQueue = new SynchronousQueue<double[]>[NUM_STAGE_THREADS];
+        SynchronousQueue<double[]>[] stageOutputQueue[];
+        stageOutputQueue[] = new SynchronousQueue[NUM_STAGE_THREADS];
 //        SynchronousQueue<double[]> outputQueue1 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue2 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue3 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue4 = new SynchronousQueue<double[]>();
 
-        SynchronousQueue<double[]>[] outputQueues = new SynchronousQueue<double[]>[NUM_BITONIC_THREADS];
+        SynchronousQueue<double[]>[] outputQueues[];
+        outputQueues[] = new SynchronousQueue[NUM_BITONIC_THREADS];
 //        SynchronousQueue<double[]> tempOutputQueue1 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> tempOutputQueue2 = new SynchronousQueue<double[]>();
 
 //        SynchronousQueue<double[]> finalOutputQueue = new SynchronousQueue<double[]>();
 
+        // Random Threads''
         for (int i = 0; i < NUM_RAND_THREADS; i++)
             randInputQueue[i] = new SynchronousQueue<double[]>();
         for (int i = 0; i < NUM_RAND_THREADS; i++) {
@@ -61,6 +65,7 @@ public class BitonicPipeline {
 //        rand4 = new Thread(new RandomArrayGenerator(N / 4, inputQueue4));
 //        rand4.start();
 
+        // Stage Threads
         for (int i = 0; i < NUM_STAGE_THREADS; i++)
             stageOutputQueue[i] = new SynchronousQueue<double[]>();
         for (int i = 0; i < NUM_STAGE_THREADS; i++) {
@@ -76,12 +81,14 @@ public class BitonicPipeline {
 //        t4 = new Thread(new StageOne(inputQueue4, outputQueue4));
 //        t4.start();
 
+        // Bitonic Threads
         for (int i = 0; i < NUM_BITONIC_THREADS; i++)
             outputQueues[i] = new SynchronousQueue<double[]>();
         for (int i = 0; i < NUM_BITONIC_THREADS - 1; i++) {
             stageThreads[i] = new Thread(new BitonicStage(stageOutputQueue[i * 2], stageOutputQueue[i * 2 + 1], outputQueues[i]));
             stageThreads[i].start();
         }
+        // final thread
         stageThreads[2] = new Thread(new BitonicStage(outputQueues[0], outputQueues[1], outputQueues[3]));
         stageThreads[2].start();
 //        t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1, "First"));
