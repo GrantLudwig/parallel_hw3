@@ -1,10 +1,17 @@
-// Grant Ludwig
-// BitonicStage.java
-// 1/26/20
+/*
+ * Grant Ludwig
+ * CPSC 4600, Seattle University
+ * BitonicStage.java
+ * 1/26/20
+ */
 
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Implements Runnable
+ * @class BitonicStage Class that implements bitonic sorting
+ */
 public class BitonicStage implements Runnable {
     private static final int timeout = 10;  // in seconds
 
@@ -18,6 +25,13 @@ public class BitonicStage implements Runnable {
      */
     public BitonicStage() {}
 
+    /**
+     * Constructor
+     * @param input1
+     * @param input2
+     * @param output
+     * @param name
+     */
     public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output, String name) {
         this.input1 = input1;
         this.input2 = input2;
@@ -29,32 +43,22 @@ public class BitonicStage implements Runnable {
         this(input1, input2, output, "");
     }
 
-    public void bitonic_merge(int indexStart, int half, boolean up) {
+    public void bitonic_merge(int indexStart, int half) {
         double temp;
-        if (up) {
-            for (int i = 0; i < half; i++)
-                if (array[indexStart + i] > array[indexStart + half + i]) {
-                    temp = array[indexStart + i];
-                    array[indexStart + i] = array[indexStart + half + i];
-                    array[indexStart + half + i] = temp;
-                }
-        }
-        else {
-            for (int i = 0; i < half; i++)
-                if (array[indexStart + i] < array[indexStart + half + i]) {
-                    temp = array[indexStart + i];
-                    array[indexStart + i] = array[indexStart + half + i];
-                    array[indexStart + half + i] = temp;
-                }
-        }
+        for (int i = 0; i < half; i++)
+            if (array[indexStart + i] > array[indexStart + half + i]) {
+                temp = array[indexStart + i];
+                array[indexStart + i] = array[indexStart + half + i];
+                array[indexStart + half + i] = temp;
+            }
     }
 
-    public void bitonic_sort(int indexStart, int length, boolean up) {
+    public void bitonic_sort(int indexStart, int length) {
         if (length > 1) {
             int half = length / 2;
             bitonic_merge(indexStart, half, up);
             bitonic_sort(indexStart, half, up);
-            bitonic_sort(indexStart + half, half, up);
+            bitonic_sort(indexStart + half, half);
         }
     }
 
@@ -77,7 +81,7 @@ public class BitonicStage implements Runnable {
         for (int i = downArray.length - 1; i >= 0; i--)
             array[arrayIndex++] = downArray[i];
 
-        bitonic_sort(0, array.length, true);
+        bitonic_sort(0, array.length);
 
         return array;
     }
