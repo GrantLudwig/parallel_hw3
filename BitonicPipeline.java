@@ -31,6 +31,8 @@ public class BitonicPipeline {
         Thread[] bitonicThreads = new Thread[NUM_BITONIC_THREADS];
 
         // build arrays of SynchronousQueues
+        // will cause a unchecked or unsafe operations note to show on compile
+            // this is fine since when the queues are added to the array they are of the same type
         SynchronousQueue<double[]> randInputQueue[];
         randInputQueue = new SynchronousQueue[NUM_RAND_THREADS];
 
