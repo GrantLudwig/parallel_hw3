@@ -120,11 +120,11 @@ public class BitonicPipeline {
                 + TIME_ALLOWED + " seconds");
 
         // stop threads
-        for (int i = 0; i < randThreads.length, i++)
+        for (int i = 0; i < randThreads.length; i++)
             randThreads[i].interupt();
-        for (int i = 0; i < stageThreads.length, i++)
+        for (int i = 0; i < stageThreads.length; i++)
             stageThreads[i].interupt();
-        for (int i = 0; i < bitonicThreads.length, i++)
+        for (int i = 0; i < bitonicThreads.length; i++)
             bitonicThreads[i].interupt();
     }
 }
