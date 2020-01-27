@@ -25,6 +25,10 @@ public class BitonicStage implements Runnable {
         this.name = name;
     }
 
+    public BitonicStage(SynchronousQueue<double[]> input1, SynchronousQueue<double[]> input2, SynchronousQueue<double[]> output) {
+        this(input1, input2, output, "");
+    }
+
     public void bitonic_merge(int indexStart, int half, boolean up) {
         double temp;
         if (up) {
