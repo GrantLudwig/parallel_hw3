@@ -99,5 +99,10 @@ public class BitonicPipeline {
         }
         System.out.println("sorted " + work + " arrays (each: " + N + " doubles) in "
                 + TIME_ALLOWED + " seconds");
+
+        inputQueue1 = null;
+        inputQueue2 = null;
+        inputQueue3 = null;
+        inputQueue4 = null;
     }
 }
