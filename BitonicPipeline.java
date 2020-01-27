@@ -121,10 +121,10 @@ public class BitonicPipeline {
 
         // stop threads
         for (int i = 0; i < randThreads.length; i++)
-            randThreads[i].interupt();
+            randThreads[i].interrupt();
         for (int i = 0; i < stageThreads.length; i++)
-            stageThreads[i].interupt();
+            stageThreads[i].interrupt();
         for (int i = 0; i < bitonicThreads.length; i++)
-            bitonicThreads[i].interupt();
+            bitonicThreads[i].interrupt();
     }
 }
