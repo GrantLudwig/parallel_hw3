@@ -92,13 +92,6 @@ public class BitonicPipeline {
 //                    System.out.print(" ");
 //                }
 //                System.out.println("");
-                System.out.println("");
-                System.out.println("Array");
-                for (int i = 0; i < 5; i++) {
-                    System.out.print(array[i]);
-                    System.out.print(" ");
-                }
-                System.out.println("");
                 work++;
             } catch (InterruptedException e) {
                 return;
