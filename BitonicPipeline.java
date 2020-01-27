@@ -10,7 +10,6 @@ public class BitonicPipeline {
     //public static final int N = 64;
     public static final int TIME_ALLOWED = 10;  // seconds
     //public static final int TIME_ALLOWED = 1;
-    private static final int timeout = 10;  // in seconds
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
@@ -71,7 +70,6 @@ public class BitonicPipeline {
         t3.start();
         t4 = new Thread(new StageOne(inputQueue4, outputQueue4));
         t4.start();
-
         t5 = new Thread(new BitonicStage(outputQueue1, outputQueue2, tempOutputQueue1, "First"));
         t5.start();
         t6 = new Thread(new BitonicStage(outputQueue3, outputQueue4, tempOutputQueue2, "Second"));
@@ -82,7 +80,7 @@ public class BitonicPipeline {
         while (System.currentTimeMillis() < start + TIME_ALLOWED * 1000) {
             try {
                 array = new double[1];
-                array = finalOutputQueue.poll(timeout * 1000, TimeUnit.MILLISECONDS);
+                array = finalOutputQueue.poll(TIME_ALLOWED * 1000, TimeUnit.MILLISECONDS);
                 if (!RandomArrayGenerator.isSorted(array) || N != array.length || array == null)
                     System.out.println("failed");
 //                System.out.println("");
@@ -104,5 +102,6 @@ public class BitonicPipeline {
         inputQueue2 = null;
         inputQueue3 = null;
         inputQueue4 = null;
+        outputQueue1
     }
 }

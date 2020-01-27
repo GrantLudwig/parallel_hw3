@@ -80,7 +80,7 @@ public class BitonicStage implements Runnable {
 
     @Override
     public void run() {
-        double[] upArray = new double[1];;
+        double[] upArray = new double[1];
         double[] downArray = new double[1];
         double[] returnArray = new double[1];
         while (true) {
