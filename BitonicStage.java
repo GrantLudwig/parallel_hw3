@@ -86,11 +86,11 @@ public class BitonicStage implements Runnable {
         while (true) {
             try {
                 upArray = input1.poll(timeout * 1000, TimeUnit.MILLISECONDS);
-                System.out.println(name + "pulled input1");
+                System.out.println(name + " pulled input1");
                 downArray = input2.poll(timeout * 1000, TimeUnit.MILLISECONDS);
-                System.out.println(name + "pulled input2");
+                System.out.println(name + " pulled input2");
                 returnArray = process(upArray, downArray);
-                System.out.println(name + "processed array");
+                System.out.println(name + " processed array");
 //                System.out.println("");
 //                System.out.println("Array " + name);
 //                for (int i = 0; i < array.length; i++) {
@@ -99,7 +99,7 @@ public class BitonicStage implements Runnable {
 //                }
 //                System.out.println("");
                 output.offer(returnArray, timeout * 1000, TimeUnit.MILLISECONDS);
-                System.out.println(name + "Complete");
+                System.out.println(name + " Complete *******************");
             } catch (InterruptedException e) {
                 return;
             }
