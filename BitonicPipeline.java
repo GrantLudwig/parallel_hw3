@@ -35,14 +35,14 @@ public class BitonicPipeline {
 //        SynchronousQueue<double[]> inputQueue3 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> inputQueue4 = new SynchronousQueue<double[]>();
 
-        SynchronousQueue<double[]>[] stageOutputQueue[];
+        SynchronousQueue<double[]> stageOutputQueue[];
         stageOutputQueue = new SynchronousQueue[NUM_STAGE_THREADS];
 //        SynchronousQueue<double[]> outputQueue1 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue2 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue3 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> outputQueue4 = new SynchronousQueue<double[]>();
 
-        SynchronousQueue<double[]>[] outputQueues[];
+        SynchronousQueue<double[]> outputQueues[];
         outputQueues = new SynchronousQueue[NUM_BITONIC_THREADS];
 //        SynchronousQueue<double[]> tempOutputQueue1 = new SynchronousQueue<double[]>();
 //        SynchronousQueue<double[]> tempOutputQueue2 = new SynchronousQueue<double[]>();
